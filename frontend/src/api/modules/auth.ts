@@ -1,4 +1,3 @@
-import type { RequestOptions } from '../request'
 import request from '../request'
 
 export interface LoginResponse {
@@ -18,27 +17,24 @@ interface LoginParam {
   password: string
 }
 
-export function login(data: LoginParam, options: RequestOptions = {}) {
+export function login(data: LoginParam) {
   return request<LoginResponse>({
     url: '/api/admin/auth/login',
     method: 'POST',
     data,
-    ...options,
   })
 }
 
-export function getAuthStatus(options: RequestOptions = {}) {
+export function getAuthStatus() {
   return request<AuthStatusResponse>({
     url: '/api/admin/auth/status',
     method: 'GET',
-    ...options,
   })
 }
 
-export function logout(options: RequestOptions = {}) {
+export function logout() {
   return request<LogoutResponse>({
     url: '/api/admin/auth/logout',
     method: 'POST',
-    ...options,
   })
 }
